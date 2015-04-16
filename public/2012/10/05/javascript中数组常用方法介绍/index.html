@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript中数组常用方法介绍 _ 刘cc的博客</title>
+  <meta name="author" content="liucc">
+  
+  <meta name="description" content="js中数组的常见用法">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript中数组常用方法介绍"/>
+  <meta property="og:site_name" content="刘cc的博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">刘cc的博客</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> javascript中数组常用方法介绍</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>js中数组的常见用法</p>
+			
+		</div> <!-- alert -->
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>js中数组操作频率非常高，掌握常用方法可以极大提高开发效率</p>
+<h3 id="join()连接">join()连接</h3><p><code>arr.join();</code>  讲数组连成字符串,参数：分隔符</p>
+<p>例：颠倒一句话：<br> <code>alert(&quot;welcom to beijing&quot;.split(&#39; &#39;).reverse().join(&#39; &#39;));</code></p>
+<h3 id="push(titem);">push(titem);</h3><p>向数组最后面添加一个元素</p>
+<h3 id="pop();">pop();</h3><p>弹出最后一个元素并返回这个元素 [1,2,3,4].pop()→4，原来的数组变成[1,2,3]</p>
+<h3 id="shift();">shift();</h3><p>弹出第一个元素并返回这个元素 [1,2,3,4].shift()→1，原来的数组变成[2,3,4]</p>
+<h3 id="unshift();">unshift();</h3><p>在数组最前面添加一个元素[1,2,3].unshift(4),原数组变成[4,1,2,3]</p>
+<h3 id="splice()">splice()</h3><ul>
+<li>删除：splice(开始，删除长度);</li>
+<li>替换：<code>splice(2,2,&#39;a&#39;,&#39;b&#39;);</code></li>
+<li>添加：<code>splice(开始位置，0，ele1,...);</code></li>
+</ul>
+<h3 id="reverse()_颠倒">reverse() 颠倒</h3><p>[1,2,3].reverse(),变成[3,2,1]</p>
+<h3 id="sort();_排序">sort(); 排序</h3><pre><code>sort(<span class="function"><span class="keyword">function</span><span class="params">(n1,n2)</span></span>{
+    <span class="keyword">return</span> n1-n2;
+});
+</code></pre><h3 id="concat(数组2,数组3…-);_连接数组">concat(数组2,数组3….);   连接数组</h3><pre><code><span class="variable"><span class="keyword">var</span> arr</span>=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+<span class="variable"><span class="keyword">var</span> arr2</span>=[<span class="number">4</span>,<span class="number">5</span>];
+<span class="variable"><span class="keyword">var</span> arr3</span>=[<span class="number">6</span>,<span class="number">7</span>];
+alert(arr2.concat(arr,arr3,[<span class="number">8</span>,<span class="number">9</span>],<span class="number">10</span>,'abc'))
+</code></pre>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2013/05/20/常用git命令及多人协作分支策略/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2012/09/14/css-如何控制文字图片垂直居中/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2012/10/05/javascript中数组常用方法介绍/" data-title="javascript中数组常用方法介绍" data-url="http://liucc.me/2012/10/05/javascript中数组常用方法介绍/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2012-10-05 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/javascript/">javascript<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/js/">js<span>1</span></a></li> <li><a href="/tags/数组/">数组<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#join()连接"><span class="toc-article-text">join()连接</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#push(titem);"><span class="toc-article-text">push(titem);</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#pop();"><span class="toc-article-text">pop();</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#shift();"><span class="toc-article-text">shift();</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#unshift();"><span class="toc-article-text">unshift();</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#splice()"><span class="toc-article-text">splice()</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#reverse()_颠倒"><span class="toc-article-text">reverse() 颠倒</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#sort();_排序"><span class="toc-article-text">sort(); 排序</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#concat(数组2,数组3…-);_连接数组"><span class="toc-article-text">concat(数组2,数组3….);   连接数组</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 liucc
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'liucc' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

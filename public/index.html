@@ -1,0 +1,553 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>刘cc的博客</title>
+  <meta name="author" content="liucc">
+  
+  <meta name="description" content="liucc专注前端开发，深入研究JavaScript，nodejs等技术。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="刘cc的博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">刘cc的博客</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header">
+  <h1>专注JavaScript</h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
+      <i class="fa fa-heart"></i>
+      我的知识管理工具
+</div>    
+
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-09-15 </div>
+			<div class="article-title"><a href="/2014/09/15/ios系统中html5游戏声音切换问题-audio/" title="在iphone手机中使用audio播放声音如何在无人为事件的情况下自动切换声音">ios系统中html5游戏声音切换问题 audio</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>我现在又这样一个需求，游戏中需要播放背景音乐，游戏结束需要，停止背景音乐并播放“你死了”的声音，事实是游戏结束时背景音乐停止了，但是“你死了”声音没有播放。</p>
+<h3 id="需求：在iphone手机中使用audio播放声音如何在无人为事件的情况下自动切换声音">需求：在iphone手机中使用audio播放声音如何在无人为事件的情况下自动切换声音</h3><p>据扯：<strong>iOS Safari 中的 HTML5 媒体元素都是单例的，所以一次只能播放一个 HTML5 音频（和 HTML5 视频）流（估计是为了减少数据费用）。</strong></p>
+<p><strong>探索：</strong><br>事实是：创建另一个audio，让丫播放，以为他会覆盖掉当前的audio，事实是没有，没有声音，很安静。<br>好吧，换一个思路，既然是一个单例audio，咱就只用一个单例，换声音的时候，<code>audio.src=&#39;other.mp3</code>‘；<code>audio.play()</code>;仍然不灵。于是我想到了，是不是还没来得及load？一定是。</p>
+<pre><code>audio.src=<span class="symbol">'other</span>.mp3'；audio.load<span class="literal">()</span>；audio.play<span class="literal">()</span>;
+</code></pre><p>咿~响了。</p>
+<p><strong>办法：</strong></p>
+<p>于是每次咱切换声音的时候就<code>audio.src=&#39;some.mp3&#39;；audio.load()；audio.play()</code>;（如果需要循环，就加loop）<br>那么问题来了：挖掘机。。sorry。如果在游戏中想播放点击音效咋办？h5游戏声音的问题这才是一小丢丢欲知如何，下回分解。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/09/15/ios系统中html5游戏声音切换问题-audio/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-04-14 </div>
+			<div class="article-title"><a href="/2014/04/14/express-中间件机制实现原理/" title="connect 核心原理.">express 中间件机制实现原理</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h3 id="功能：">功能：</h3><pre><code><span class="keyword">app</span>.<span class="keyword">use</span>(fn1);
+<span class="keyword">app</span>.<span class="keyword">use</span>（fn2);
+<span class="keyword">app</span>.<span class="keyword">use</span>（fn2);
+<span class="keyword">app</span>.<span class="keyword">use</span>（...);
+...
+</code></pre><h3 id="其中原理：">其中原理：</h3><p>非常简单，就是讲功能函数fn1.。。按照use的顺序依次加入一个数组，app.run()的时候这个数组里的函数依次执行。<br>代码如下:</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">MiddleWare</span><span class="params">()</span></span>{
+    <span class="keyword">this</span>._stack=[];<span class="comment">//stack命名参考：栈（stack）在计算机科学中是限定仅在表尾进行插入或删除操作的线性表</span>
+
+}
+MiddleWare.prototype.<span class="keyword">use</span>=<span class="function"><span class="keyword">function</span><span class="params">(callback)</span></span>{
+     <span class="keyword">this</span>._stack.push(callback);
+
+}
+MiddleWare.prototype.run(fnEnd){
+    <span class="keyword">var</span> index=<span class="number">0</span>;
+    <span class="keyword">var</span> _this=<span class="keyword">this</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">next</span><span class="params">()</span></span>{
+        <span class="keyword">if</span>(index&lt;_this._stack.length){
+            _this._stack[index++](next)<span class="comment">//注意index是先赋值后+1</span>
+            <span class="comment">//index++ //不可以这样写因为这里是同步的 走不到这里</span>
+        }<span class="keyword">else</span>{
+            fnEnd();
+        }
+    }
+
+}
+</code></pre><h3 id="中间件测试：">中间件测试：</h3><pre><code><span class="keyword">var</span> app=<span class="keyword">new</span> MiddleWare();
+app.use(<span class="function"><span class="keyword">function</span><span class="params">(next)</span></span>{
+    <span class="built_in">console</span>.log(<span class="string">'test1'</span>);
+next();<span class="comment">//如果next不调用则不会继续往下传递</span>
+});
+ware.use(<span class="function"><span class="keyword">function</span><span class="params">(next)</span></span>{
+    <span class="built_in">console</span>.log(<span class="string">'test2'</span>);
+next();
+})
+app.run(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="built_in">console</span>.log(<span class="string">'over'</span>);
+});
+</code></pre>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/04/14/express-中间件机制实现原理/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2013-05-20 </div>
+			<div class="article-title"><a href="/2013/05/20/常用git命令及多人协作分支策略/" title="git常用命令有哪些，如何利用分支">常用git命令及多人协作分支策略</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h3 id="1-创建版本库">1.创建版本库</h3><ul>
+<li>初始化一个Git仓库，使用<code>git init</code>命令。</li>
+<li>添加文件到Git仓库，分两步：</li>
+</ul>
+<pre><code>-<span class="ruby"> 第一步，使用命令<span class="string">`git add &lt;file&gt;`</span>，注意，可反复多次使用，添加多个文件；
+</span>-<span class="ruby"> 第二步，使用命令<span class="string">`git commit`</span>，完成。</span>
+</code></pre><h3 id="2-当前状态">2.当前状态</h3><p>要随时掌握工作区的状态，使用<code>git status</code>命令。</p>
+<p>如果<code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容。</p>
+<h3 id="3-版本回退">3.版本回退</h3><p><strong>HEAD</strong>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。<br>穿梭前，用<code>git log可</code>以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h3 id="4-暂存区">4.暂存区</h3><ul>
+<li>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</li>
+<li>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。<br>每次修改，如果不add到暂存区，那就不会加入到commit中。</li>
+</ul>
+<h3 id="5-撤销修改">5.撤销修改</h3><ul>
+<li>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</li>
+<li>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD file</code>，就回到了场景1，第二步按场景1操作。</li>
+<li>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考3版本回退一节，不过前提是没有推送到远程库。</li>
+</ul>
+<h3 id="6-删除文件">6.删除文件</h3><p>命令<code>git r</code>m用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容<code>git checkout -- file</code>。</p>
+<h3 id="7-添加远程库">7.添加远程库</h3><ul>
+<li>查看所在仓库远程仓库地址 <code>git remote -v</code></li>
+<li>要关联一个远程库，使用命令<code>git remote add origin git@server-name:path/repo-name.git</code>；<br>关联后，使用命令<code>git push -u origin master</code>第一次推送master分支的所有内容；</li>
+<li>此后，每次本地提交后，只要有必要，就可以使用命令<code>git push origin master</code>推送最新修改；</li>
+</ul>
+<h3 id="8-添加远程库">8.添加远程库</h3><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用<code>git clone</code>命令克隆。<br>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<h3 id="9-创建与合并分支">9.创建与合并分支</h3><p>Git鼓励大量使用分支：<br>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code><br>创建远程分支就是 本地分支pus到远程</p>
+<h3 id="10-解决冲突">10.解决冲突</h3><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。<br>用<code>git log --graph</code>命令可以看到分支合并图.</p>
+<h3 id="11-分支策略">11.<strong>分支策略</strong></h3><p>在实际开发中，我们应该按照几个基本原则进行分支管理：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。<br>所以，团队合作的分支看起来就像这样：</p>
+<h3 id="12-Bug分支">12.Bug分支</h3><p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。</p>
+<h3 id="13-feature分支">13.feature分支</h3><p>开发一个新feature，最好新建一个分支；<br>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
+<h3 id="14-多人协作">14.多人协作</h3><p>查看远程库信息，使用<code>git remote -v</code>；<br>本地新建的分支如果不推送到远程，对其他人就是不可见的；<br>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；<br>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；<br>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name；</code><br>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2013/05/20/常用git命令及多人协作分支策略/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2012-10-05 </div>
+			<div class="article-title"><a href="/2012/10/05/javascript中数组常用方法介绍/" title="js中数组的常见用法">javascript中数组常用方法介绍</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>js中数组操作频率非常高，掌握常用方法可以极大提高开发效率</p>
+<h3 id="join()连接">join()连接</h3><p><code>arr.join();</code>  讲数组连成字符串,参数：分隔符</p>
+<p>例：颠倒一句话：<br> <code>alert(&quot;welcom to beijing&quot;.split(&#39; &#39;).reverse().join(&#39; &#39;));</code></p>
+<h3 id="push(titem);">push(titem);</h3><p>向数组最后面添加一个元素</p>
+<h3 id="pop();">pop();</h3><p>弹出最后一个元素并返回这个元素 [1,2,3,4].pop()→4，原来的数组变成[1,2,3]</p>
+<h3 id="shift();">shift();</h3><p>弹出第一个元素并返回这个元素 [1,2,3,4].shift()→1，原来的数组变成[2,3,4]</p>
+<h3 id="unshift();">unshift();</h3><p>在数组最前面添加一个元素[1,2,3].unshift(4),原数组变成[4,1,2,3]</p>
+<h3 id="splice()">splice()</h3><ul>
+<li>删除：splice(开始，删除长度);</li>
+<li>替换：<code>splice(2,2,&#39;a&#39;,&#39;b&#39;);</code></li>
+<li>添加：<code>splice(开始位置，0，ele1,...);</code></li>
+</ul>
+<h3 id="reverse()_颠倒">reverse() 颠倒</h3><p>[1,2,3].reverse(),变成[3,2,1]</p>
+<h3 id="sort();_排序">sort(); 排序</h3><pre><code>sort(<span class="function"><span class="keyword">function</span><span class="params">(n1,n2)</span></span>{
+    <span class="keyword">return</span> n1-n2;
+});
+</code></pre><h3 id="concat(数组2,数组3…-);_连接数组">concat(数组2,数组3….);   连接数组</h3><pre><code><span class="variable"><span class="keyword">var</span> arr</span>=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+<span class="variable"><span class="keyword">var</span> arr2</span>=[<span class="number">4</span>,<span class="number">5</span>];
+<span class="variable"><span class="keyword">var</span> arr3</span>=[<span class="number">6</span>,<span class="number">7</span>];
+alert(arr2.concat(arr,arr3,[<span class="number">8</span>,<span class="number">9</span>],<span class="number">10</span>,'abc'))
+</code></pre>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2012/10/05/javascript中数组常用方法介绍/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2012-09-14 </div>
+			<div class="article-title"><a href="/2012/09/14/css-如何控制文字图片垂直居中/" title="文字图片垂直居中">css 如何控制文字图片垂直居中</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="文字图片垂直居中问题">文字图片垂直居中问题</h2><h3 id="固定高度容器中，单行文字垂直居中">固定高度容器中，单行文字垂直居中</h3><p>设置行高</p>
+<pre><code><span class="class">.box</span>{
+    <span class="attribute">height</span>:<span class="number">50px</span>;
+    <span class="attribute">line-height</span>:<span class="number">50px</span>
+}
+</code></pre><h3 id="固定容器高度，或者未知容器高度，多行文字垂直居中">固定容器高度，或者未知容器高度，多行文字垂直居中</h3><pre><code><span class="class">.box</span><span class="rules">{
+        <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;
+        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">400px</span></span></span>;
+        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">400px</span></span></span>;
+        <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;
+        <span class="rule"><span class="attribute">background</span>:<span class="value">red</span></span>;
+        <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;
+    }</span>
+</code></pre><h3 id="兼容IE怎么办？">兼容IE怎么办？</h3><p>不管</p>
+<h2 id="附本例测试代码">附本例测试代码</h2><pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"author"</span> <span class="attribute">content</span>=<span class="value">"liucc"</span> /&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span>文字垂直居中<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"description"</span> <span class="attribute">content</span>=<span class="value">""</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"keywords"</span> <span class="attribute">content</span>=<span class="value">""</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+    <span class="class">.box</span><span class="rules">{
+        <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;
+        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">400px</span></span></span>;
+        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">400px</span></span></span>;
+        <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;
+        <span class="rule"><span class="attribute">background</span>:<span class="value">red</span></span>;
+        <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;
+    }</span>
+
+
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+<span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+
+}
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"https://www.baidu.com/img/bd_logo1.png"</span> <span class="attribute">alt</span>=<span class="value">""</span>&gt;</span>
+        <span class="comment">&lt;!-- &lt;p&gt;图片也如此&lt;br&gt;
+
+收房&lt;br&gt;
+f
+        &lt;/p&gt; --&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2012/09/14/css-如何控制文字图片垂直居中/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			<div class="form-group has-success has-feedback">
+  <form action="//google.com/search" method="get" accept-charset="utf-8" >
+    <input type="search" name="q" results="0" placeholder="搜索" class="form-control">
+    <input type="hidden" name="q" value="site:liucc.me">	
+  </form>
+</div>
+
+		
+			
+	<div class="widget">
+		<h4>分类</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/javascript/">javascript<span>2</span></a></li>
+		
+			<li><a href="/categories/nodejs/">nodejs<span>1</span></a></li>
+		
+			<li><a href="/categories/随笔/">随笔<span>2</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>标签云</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/css/">css<span>1</span></a></li>
+		
+			<li><a href="/tags/垂直居中/">垂直居中<span>1</span></a></li>
+		
+			<li><a href="/tags/js/">js<span>1</span></a></li>
+		
+			<li><a href="/tags/html5游戏/">html5游戏<span>1</span></a></li>
+		
+			<li><a href="/tags/express/">express<span>1</span></a></li>
+		
+			<li><a href="/tags/中间件/">中间件<span>1</span></a></li>
+		
+			<li><a href="/tags/ios/">ios<span>1</span></a></li>
+		
+			<li><a href="/tags/audio/">audio<span>1</span></a></li>
+		
+			<li><a href="/tags/数组/">数组<span>1</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2014/09/15/ios系统中html5游戏声音切换问题-audio/"  title="在iphone手机中使用audio播放声音如何在无人为事件的情况下自动切换声音" ><i class="fa fa-file-o"></i>ios系统中html5游戏声音切换问题 audio...</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/14/express-中间件机制实现原理/"  title="connect 核心原理." ><i class="fa fa-file-o"></i>express 中间件机制实现原理...</a>
+      </li>
+    
+      <li>
+        <a href="/2013/05/20/常用git命令及多人协作分支策略/"  title="git常用命令有哪些，如何利用分支" ><i class="fa fa-file-o"></i>常用git命令及多人协作分支策略...</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/05/javascript中数组常用方法介绍/"  title="js中数组的常见用法" ><i class="fa fa-file-o"></i>javascript中数组常用方法介绍...</a>
+      </li>
+    
+      <li>
+        <a href="/2012/09/14/css-如何控制文字图片垂直居中/"  title="文字图片垂直居中" ><i class="fa fa-file-o"></i>css 如何控制文字图片垂直居中...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/liucc1986" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 liucc
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'liucc' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

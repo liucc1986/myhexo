@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>常用git命令及多人协作分支策略 _ 刘cc的博客</title>
+  <meta name="author" content="liucc">
+  
+  <meta name="description" content="git常用命令有哪些，如何利用分支">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="常用git命令及多人协作分支策略"/>
+  <meta property="og:site_name" content="刘cc的博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">刘cc的博客</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 常用git命令及多人协作分支策略</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>git常用命令有哪些，如何利用分支</p>
+			
+		</div> <!-- alert -->
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h3 id="1-创建版本库">1.创建版本库</h3><ul>
+<li>初始化一个Git仓库，使用<code>git init</code>命令。</li>
+<li>添加文件到Git仓库，分两步：</li>
+</ul>
+<pre><code>-<span class="ruby"> 第一步，使用命令<span class="string">`git add &lt;file&gt;`</span>，注意，可反复多次使用，添加多个文件；
+</span>-<span class="ruby"> 第二步，使用命令<span class="string">`git commit`</span>，完成。</span>
+</code></pre><h3 id="2-当前状态">2.当前状态</h3><p>要随时掌握工作区的状态，使用<code>git status</code>命令。</p>
+<p>如果<code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容。</p>
+<h3 id="3-版本回退">3.版本回退</h3><p><strong>HEAD</strong>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。<br>穿梭前，用<code>git log可</code>以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h3 id="4-暂存区">4.暂存区</h3><ul>
+<li>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</li>
+<li>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。<br>每次修改，如果不add到暂存区，那就不会加入到commit中。</li>
+</ul>
+<h3 id="5-撤销修改">5.撤销修改</h3><ul>
+<li>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</li>
+<li>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD file</code>，就回到了场景1，第二步按场景1操作。</li>
+<li>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考3版本回退一节，不过前提是没有推送到远程库。</li>
+</ul>
+<h3 id="6-删除文件">6.删除文件</h3><p>命令<code>git r</code>m用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容<code>git checkout -- file</code>。</p>
+<h3 id="7-添加远程库">7.添加远程库</h3><ul>
+<li>查看所在仓库远程仓库地址 <code>git remote -v</code></li>
+<li>要关联一个远程库，使用命令<code>git remote add origin git@server-name:path/repo-name.git</code>；<br>关联后，使用命令<code>git push -u origin master</code>第一次推送master分支的所有内容；</li>
+<li>此后，每次本地提交后，只要有必要，就可以使用命令<code>git push origin master</code>推送最新修改；</li>
+</ul>
+<h3 id="8-添加远程库">8.添加远程库</h3><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用<code>git clone</code>命令克隆。<br>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<h3 id="9-创建与合并分支">9.创建与合并分支</h3><p>Git鼓励大量使用分支：<br>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code><br>创建远程分支就是 本地分支pus到远程</p>
+<h3 id="10-解决冲突">10.解决冲突</h3><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。<br>用<code>git log --graph</code>命令可以看到分支合并图.</p>
+<h3 id="11-分支策略">11.<strong>分支策略</strong></h3><p>在实际开发中，我们应该按照几个基本原则进行分支管理：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。<br>所以，团队合作的分支看起来就像这样：</p>
+<h3 id="12-Bug分支">12.Bug分支</h3><p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。</p>
+<h3 id="13-feature分支">13.feature分支</h3><p>开发一个新feature，最好新建一个分支；<br>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
+<h3 id="14-多人协作">14.多人协作</h3><p>查看远程库信息，使用<code>git remote -v</code>；<br>本地新建的分支如果不推送到远程，对其他人就是不可见的；<br>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；<br>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；<br>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name；</code><br>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2014/04/14/express-中间件机制实现原理/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2012/10/05/javascript中数组常用方法介绍/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2013/05/20/常用git命令及多人协作分支策略/" data-title="常用git命令及多人协作分支策略" data-url="http://liucc.me/2013/05/20/常用git命令及多人协作分支策略/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2013-05-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/随笔/">随笔<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/git/">git<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#1-创建版本库"><span class="toc-article-text">1.创建版本库</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#2-当前状态"><span class="toc-article-text">2.当前状态</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#3-版本回退"><span class="toc-article-text">3.版本回退</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#4-暂存区"><span class="toc-article-text">4.暂存区</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#5-撤销修改"><span class="toc-article-text">5.撤销修改</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#6-删除文件"><span class="toc-article-text">6.删除文件</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#7-添加远程库"><span class="toc-article-text">7.添加远程库</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#8-添加远程库"><span class="toc-article-text">8.添加远程库</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#9-创建与合并分支"><span class="toc-article-text">9.创建与合并分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#10-解决冲突"><span class="toc-article-text">10.解决冲突</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#11-分支策略"><span class="toc-article-text">11.分支策略</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#12-Bug分支"><span class="toc-article-text">12.Bug分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#13-feature分支"><span class="toc-article-text">13.feature分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#14-多人协作"><span class="toc-article-text">14.多人协作</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 liucc
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'liucc' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
